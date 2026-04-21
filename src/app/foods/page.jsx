@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const FoodsPage = async () => {
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/foods');
@@ -46,9 +47,9 @@ const FoodsPage = async () => {
                     {foodItems.map((food) => (
                         <article
                             key={food.id}
-                            className="group overflow-hidden rounded-[2rem] border border-white/70 bg-white/90 shadow-[0_24px_60px_rgba(120,53,15,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(120,53,15,0.16)]"
+                            className="group flex h-auto min-h-[46rem] flex-col overflow-hidden rounded-[2rem] border border-white/70 bg-white/90 shadow-[0_24px_60px_rgba(120,53,15,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(120,53,15,0.16)]"
                         >
-                            <div className="relative h-60 overflow-hidden bg-amber-100">
+                            <div className="relative h-64 min-h-64 overflow-hidden bg-amber-100">
                                 <Image
                                     src={food.image_link}
                                     alt={food.dish_name}
@@ -66,17 +67,17 @@ const FoodsPage = async () => {
                                 </div>
                             </div>
 
-                            <div className="space-y-5 p-5">
+                            <div className="flex flex-1 flex-col space-y-5 p-5">
                                 <div className="space-y-2">
                                     <div className="flex items-start justify-between gap-4">
-                                        <h2 className="text-xl font-semibold leading-7 text-slate-950">
+                                        <h2 className="min-h-14 text-xl font-semibold leading-7 text-slate-950">
                                             {food.dish_name}
                                         </h2>
                                         <span className="shrink-0 rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">
                                             BDT {food.price}
                                         </span>
                                     </div>
-                                    <p className="text-sm leading-6 text-slate-600">
+                                    <p className="min-h-12 text-sm leading-6 text-slate-600">
                                         {food.cuisine}
                                     </p>
                                 </div>
@@ -113,7 +114,7 @@ const FoodsPage = async () => {
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className="flex-1">
                                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
                                         Main ingredients
                                     </p>
@@ -127,6 +128,21 @@ const FoodsPage = async () => {
                                             </span>
                                         ))}
                                     </div>
+                                </div>
+
+                                <div className="mt-auto flex gap-3 pt-1">
+                                    <button
+                                        type="button"
+                                        className="flex-1 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                                    >
+                                        Add to Cart
+                                    </button>
+                                    <Link
+                                        href={`/foods/${food.id}`}
+                                        className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-amber-300 hover:bg-amber-50 hover:text-amber-800"
+                                    >
+                                        Show Details
+                                    </Link>
                                 </div>
                             </div>
                         </article>
