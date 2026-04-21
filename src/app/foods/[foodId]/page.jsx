@@ -33,7 +33,7 @@ const FoodDetailPage = async ({ params }) => {
 
                 <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
                     <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/85 shadow-[0_24px_70px_rgba(120,53,15,0.12)] backdrop-blur">
-                        <div className="relative h-[22rem] w-full sm:h-[28rem]">
+                        <div className="relative h-[22rem] w-full sm:h-[28rem] lg:h-full lg:min-h-[34rem]">
                             <Image
                                 src={food.image_link}
                                 alt={food.dish_name}
