@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Rendering Demo
+
+Eta ekta chhoto Next.js App Router project jekhane external API theke data fetch kore `foods` ebong `todos` page render kora hoyeche. Project-ta server-side data fetching, dynamic routing, loading state, ebong error boundary-er basic usage dekhano-r jonno bhalo ekta demo.
+
+## Project Overview
+
+Ei project-e muloto ei route-gulo ache:
+
+- `/` : default landing page
+- `/foods` : food collection page, jekhane API theke food data ene card layout-e dekhano hoy
+- `/foods/[foodId]` : single food detail page, jekhane nirdishto item-er image, nutrition, pricing, ingredients, ebong cooking steps dekhano hoy
+- `/todos` : todo dashboard, jekhane completed, pending, ebong featured tasks alada kore dekhano hoy
+
+## Features
+
+- Next.js App Router based routing
+- Async server components diye API data fetch
+- Dynamic route: `foods/[foodId]`
+- `loading.jsx` diye loading UI
+- `error.jsx` diye foods route-er custom error state
+- Tailwind CSS v4 + DaisyUI styling
+- Remote image support via `next/image`
+- React Compiler enabled in `next.config.mjs`
+
+## Tech Stack
+
+- Next.js `16.2.4`
+- React `19.2.4`
+- Tailwind CSS `4`
+- DaisyUI `5`
+- ESLint `9`
+
+## External Data Sources
+
+Ei project duita public API use kore:
+
+- Foods API: `https://phi-lab-server.vercel.app/api/v1/lab/foods`
+- Todos API: `https://jsonplaceholder.typicode.com/todos`
+
+`foods` page ebong detail page thikmoto load hote internet connection dorkar. Food image render korar jonno Cloudinary remote images allow kora ache.
 
 ## Getting Started
 
-First, run the development server:
+Project locally run korte:
+
+```bash
+npm install
+npm run dev
+```
+
+Tarpor browser-e ei URL open korun:
+
+```bash
+http://localhost:3000
+```
+
+## Available Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```text
+src/app/
+|-- layout.js
+|-- page.js
+|-- globals.css
+|-- foods/
+|   |-- page.jsx
+|   |-- loading.jsx
+|   |-- error.jsx
+|   `-- [foodId]/
+|       `-- page.jsx
+`-- todos/
+    `-- page.jsx
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Notes
 
-## Learn More
+- Root homepage ekhono default starter content dekhay.
+- `foods/error.jsx` client component hisebe error handle kore.
+- Kono `foodId` invalid hole detail route `notFound()` trigger kore.
+- UI-te Bangladeshi pricing context hisebe `BDT` use kora hoyeche.
 
-To learn more about Next.js, take a look at the following resources:
+## Purpose
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ei repo learning, practice, ebong rendering pattern bojhar jonno handy. Bishesh kore jodi App Router, async page component, dynamic params, ar route-level loading/error handling eksathe dekhte chan, tahole project-ti bhalo reference hobe.
